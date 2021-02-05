@@ -1,2 +1,2 @@
 # PlaybookService
-Playbook Service API Repo
+Playbook Microservice API Repo
