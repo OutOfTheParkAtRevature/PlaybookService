@@ -1,23 +1,23 @@
 {
   "format": 1,
   "restore": {
-    "F:\\Visual Studio Projects\\P3_LeagueManager\\PlaybookService\\PlaybookService\\PlaybookService.csproj": {}
+    "C:\\Users\\Dayton\\Desktop\\RevvyBoi\\P3\\PlaybookService\\PlaybookService\\PlaybookService.csproj": {}
   },
   "projects": {
-    "F:\\Visual Studio Projects\\P3_LeagueManager\\PlaybookService\\Logic\\Service.csproj": {
+    "C:\\Users\\Dayton\\Desktop\\RevvyBoi\\P3\\PlaybookService\\Logic\\Service.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Visual Studio Projects\\P3_LeagueManager\\PlaybookService\\Logic\\Service.csproj",
+        "projectUniqueName": "C:\\Users\\Dayton\\Desktop\\RevvyBoi\\P3\\PlaybookService\\Logic\\Service.csproj",
         "projectName": "Service",
-        "projectPath": "F:\\Visual Studio Projects\\P3_LeagueManager\\PlaybookService\\Logic\\Service.csproj",
-        "packagesPath": "C:\\Users\\theje\\.nuget\\packages\\",
-        "outputPath": "F:\\Visual Studio Projects\\P3_LeagueManager\\PlaybookService\\Logic\\obj\\",
+        "projectPath": "C:\\Users\\Dayton\\Desktop\\RevvyBoi\\P3\\PlaybookService\\Logic\\Service.csproj",
+        "packagesPath": "C:\\Users\\Dayton\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Dayton\\Desktop\\RevvyBoi\\P3\\PlaybookService\\Logic\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\theje\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Dayton\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -31,11 +31,11 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "F:\\Visual Studio Projects\\P3_LeagueManager\\PlaybookService\\Models\\Model.csproj": {
-                "projectPath": "F:\\Visual Studio Projects\\P3_LeagueManager\\PlaybookService\\Models\\Model.csproj"
+              "C:\\Users\\Dayton\\Desktop\\RevvyBoi\\P3\\PlaybookService\\Models\\Model.csproj": {
+                "projectPath": "C:\\Users\\Dayton\\Desktop\\RevvyBoi\\P3\\PlaybookService\\Models\\Model.csproj"
               },
-              "F:\\Visual Studio Projects\\P3_LeagueManager\\PlaybookService\\Repo\\Repo.csproj": {
-                "projectPath": "F:\\Visual Studio Projects\\P3_LeagueManager\\PlaybookService\\Repo\\Repo.csproj"
+              "C:\\Users\\Dayton\\Desktop\\RevvyBoi\\P3\\PlaybookService\\Repo\\Repo.csproj": {
+                "projectPath": "C:\\Users\\Dayton\\Desktop\\RevvyBoi\\P3\\PlaybookService\\Repo\\Repo.csproj"
               }
             }
           }
@@ -86,24 +86,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "F:\\Visual Studio Projects\\P3_LeagueManager\\PlaybookService\\Models\\Model.csproj": {
+    "C:\\Users\\Dayton\\Desktop\\RevvyBoi\\P3\\PlaybookService\\Models\\Model.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Visual Studio Projects\\P3_LeagueManager\\PlaybookService\\Models\\Model.csproj",
+        "projectUniqueName": "C:\\Users\\Dayton\\Desktop\\RevvyBoi\\P3\\PlaybookService\\Models\\Model.csproj",
         "projectName": "Model",
-        "projectPath": "F:\\Visual Studio Projects\\P3_LeagueManager\\PlaybookService\\Models\\Model.csproj",
-        "packagesPath": "C:\\Users\\theje\\.nuget\\packages\\",
-        "outputPath": "F:\\Visual Studio Projects\\P3_LeagueManager\\PlaybookService\\Models\\obj\\",
+        "projectPath": "C:\\Users\\Dayton\\Desktop\\RevvyBoi\\P3\\PlaybookService\\Models\\Model.csproj",
+        "packagesPath": "C:\\Users\\Dayton\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Dayton\\Desktop\\RevvyBoi\\P3\\PlaybookService\\Models\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\theje\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Dayton\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -165,24 +165,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "F:\\Visual Studio Projects\\P3_LeagueManager\\PlaybookService\\PlaybookService\\PlaybookService.csproj": {
+    "C:\\Users\\Dayton\\Desktop\\RevvyBoi\\P3\\PlaybookService\\PlaybookService\\PlaybookService.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Visual Studio Projects\\P3_LeagueManager\\PlaybookService\\PlaybookService\\PlaybookService.csproj",
+        "projectUniqueName": "C:\\Users\\Dayton\\Desktop\\RevvyBoi\\P3\\PlaybookService\\PlaybookService\\PlaybookService.csproj",
         "projectName": "PlaybookService",
-        "projectPath": "F:\\Visual Studio Projects\\P3_LeagueManager\\PlaybookService\\PlaybookService\\PlaybookService.csproj",
-        "packagesPath": "C:\\Users\\theje\\.nuget\\packages\\",
-        "outputPath": "F:\\Visual Studio Projects\\P3_LeagueManager\\PlaybookService\\PlaybookService\\obj\\",
+        "projectPath": "C:\\Users\\Dayton\\Desktop\\RevvyBoi\\P3\\PlaybookService\\PlaybookService\\PlaybookService.csproj",
+        "packagesPath": "C:\\Users\\Dayton\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Dayton\\Desktop\\RevvyBoi\\P3\\PlaybookService\\PlaybookService\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\theje\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Dayton\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -196,11 +196,11 @@
           "net5.0": {
             "targetAlias": "net5.0",
             "projectReferences": {
-              "F:\\Visual Studio Projects\\P3_LeagueManager\\PlaybookService\\Logic\\Service.csproj": {
-                "projectPath": "F:\\Visual Studio Projects\\P3_LeagueManager\\PlaybookService\\Logic\\Service.csproj"
+              "C:\\Users\\Dayton\\Desktop\\RevvyBoi\\P3\\PlaybookService\\Logic\\Service.csproj": {
+                "projectPath": "C:\\Users\\Dayton\\Desktop\\RevvyBoi\\P3\\PlaybookService\\Logic\\Service.csproj"
               },
-              "F:\\Visual Studio Projects\\P3_LeagueManager\\PlaybookService\\Models\\Model.csproj": {
-                "projectPath": "F:\\Visual Studio Projects\\P3_LeagueManager\\PlaybookService\\Models\\Model.csproj"
+              "C:\\Users\\Dayton\\Desktop\\RevvyBoi\\P3\\PlaybookService\\Models\\Model.csproj": {
+                "projectPath": "C:\\Users\\Dayton\\Desktop\\RevvyBoi\\P3\\PlaybookService\\Models\\Model.csproj"
               }
             }
           }
@@ -258,24 +258,24 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "F:\\Visual Studio Projects\\P3_LeagueManager\\PlaybookService\\Repo\\Repo.csproj": {
+    "C:\\Users\\Dayton\\Desktop\\RevvyBoi\\P3\\PlaybookService\\Repo\\Repo.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "F:\\Visual Studio Projects\\P3_LeagueManager\\PlaybookService\\Repo\\Repo.csproj",
+        "projectUniqueName": "C:\\Users\\Dayton\\Desktop\\RevvyBoi\\P3\\PlaybookService\\Repo\\Repo.csproj",
         "projectName": "Repo",
-        "projectPath": "F:\\Visual Studio Projects\\P3_LeagueManager\\PlaybookService\\Repo\\Repo.csproj",
-        "packagesPath": "C:\\Users\\theje\\.nuget\\packages\\",
-        "outputPath": "F:\\Visual Studio Projects\\P3_LeagueManager\\PlaybookService\\Repo\\obj\\",
+        "projectPath": "C:\\Users\\Dayton\\Desktop\\RevvyBoi\\P3\\PlaybookService\\Repo\\Repo.csproj",
+        "packagesPath": "C:\\Users\\Dayton\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\Dayton\\Desktop\\RevvyBoi\\P3\\PlaybookService\\Repo\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files\\dotnet\\sdk\\NuGetFallbackFolder"
         ],
         "configFilePaths": [
-          "C:\\Users\\theje\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\Dayton\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -289,8 +289,8 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "F:\\Visual Studio Projects\\P3_LeagueManager\\PlaybookService\\Models\\Model.csproj": {
-                "projectPath": "F:\\Visual Studio Projects\\P3_LeagueManager\\PlaybookService\\Models\\Model.csproj"
+              "C:\\Users\\Dayton\\Desktop\\RevvyBoi\\P3\\PlaybookService\\Models\\Model.csproj": {
+                "projectPath": "C:\\Users\\Dayton\\Desktop\\RevvyBoi\\P3\\PlaybookService\\Models\\Model.csproj"
               }
             }
           }
@@ -341,7 +341,7 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.102\\RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\5.0.101\\RuntimeIdentifierGraph.json"
         }
       }
     }

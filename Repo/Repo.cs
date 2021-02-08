@@ -1,9 +1,27 @@
-﻿using System;
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using Models;
+using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
 
 namespace Repo
 {
     public class Repo
     {
+
+        private readonly ProgContext _progContext;
+        private readonly ILogger _logger;
+        public DbSet<Playbook> playbooks;
+
+        public Repo(ProgContext progContext, ILogger<Repo> logger)
+        {
+            _progContext = progContext;
+            _logger = logger;
+            this.playbooks = _progContext.Playbooks;
+
+        }
+
         /// <summary>
         /// Get Playbook
         /// </summary>
