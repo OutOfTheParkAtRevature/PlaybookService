@@ -20,3 +20,9 @@ F:\Visual Studio Projects\P3_LeagueManager\PlaybookService\PlaybookService\bin\D
 F:\Visual Studio Projects\P3_LeagueManager\PlaybookService\PlaybookService\bin\Debug\net5.0\Humanizer.dll
 F:\Visual Studio Projects\P3_LeagueManager\PlaybookService\PlaybookService\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Design.dll
 F:\Visual Studio Projects\P3_LeagueManager\PlaybookService\PlaybookService\bin\Debug\net5.0\Microsoft.EntityFrameworkCore.Relational.dll
+D:\Revature\Repos\P3\PlaybookService\PlaybookService\obj\Debug\net5.0\PlaybookService.csprojAssemblyReference.cache
+D:\Revature\Repos\P3\PlaybookService\PlaybookService\obj\Debug\net5.0\PlaybookService.GeneratedMSBuildEditorConfig.editorconfig
+D:\Revature\Repos\P3\PlaybookService\PlaybookService\obj\Debug\net5.0\PlaybookService.AssemblyInfoInputs.cache
+D:\Revature\Repos\P3\PlaybookService\PlaybookService\obj\Debug\net5.0\PlaybookService.AssemblyInfo.cs
+D:\Revature\Repos\P3\PlaybookService\PlaybookService\obj\Debug\net5.0\PlaybookService.csproj.CoreCompileInputs.cache
+D:\Revature\Repos\P3\PlaybookService\PlaybookService\obj\Debug\net5.0\PlaybookService.MvcApplicationPartsAssemblyInfo.cache

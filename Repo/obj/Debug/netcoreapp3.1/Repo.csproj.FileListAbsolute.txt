@@ -2,3 +2,7 @@ F:\Visual Studio Projects\P3_LeagueManager\PlaybookService\Repo\bin\Debug\netcor
 F:\Visual Studio Projects\P3_LeagueManager\PlaybookService\Repo\obj\Debug\netcoreapp3.1\Repo.AssemblyInfoInputs.cache
 F:\Visual Studio Projects\P3_LeagueManager\PlaybookService\Repo\obj\Debug\netcoreapp3.1\Repo.AssemblyInfo.cs
 F:\Visual Studio Projects\P3_LeagueManager\PlaybookService\Repo\obj\Debug\netcoreapp3.1\Repo.csprojAssemblyReference.cache
+D:\Revature\Repos\P3\PlaybookService\Repo\obj\Debug\netcoreapp3.1\Repo.csprojAssemblyReference.cache
+D:\Revature\Repos\P3\PlaybookService\Repo\obj\Debug\netcoreapp3.1\Repo.AssemblyInfoInputs.cache
+D:\Revature\Repos\P3\PlaybookService\Repo\obj\Debug\netcoreapp3.1\Repo.AssemblyInfo.cs
+D:\Revature\Repos\P3\PlaybookService\Repo\obj\Debug\netcoreapp3.1\Repo.csproj.CoreCompileInputs.cache
