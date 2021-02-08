@@ -5786,9 +5786,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\Dayton\\Desktop\\RevvyBoi\\P3\\PlaybookService\\Repo\\Repo.csproj",
-      "projectName": "Repo",
-      "projectPath": "C:\\Users\\Dayton\\Desktop\\RevvyBoi\\P3\\PlaybookService\\Repo\\Repo.csproj",
+      "projectUniqueName": "C:\\Users\\Dayton\\Desktop\\RevvyBoi\\P3\\PlaybookService\\Repo\\Repository.csproj",
+      "projectName": "Repository",
+      "projectPath": "C:\\Users\\Dayton\\Desktop\\RevvyBoi\\P3\\PlaybookService\\Repo\\Repository.csproj",
       "packagesPath": "C:\\Users\\Dayton\\.nuget\\packages\\",
       "outputPath": "C:\\Users\\Dayton\\Desktop\\RevvyBoi\\P3\\PlaybookService\\Repo\\obj\\",
       "projectStyle": "PackageReference",

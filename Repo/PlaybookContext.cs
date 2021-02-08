@@ -2,15 +2,15 @@
 using Microsoft.EntityFrameworkCore;
 using Models;
 
-namespace Repo
+namespace Repository
 {
-    public class ProgContext : DbContext
+    public class PlaybookContext : DbContext
     {
         public DbSet<Playbook> Playbooks { get; set; }
+        public DbSet<Play> Plays { get; set; }
 
-
-        public ProgContext() { }
-        public ProgContext(DbContextOptions<ProgContext> options) : base(options) { }
+        public PlaybookContext() { }
+        public PlaybookContext(DbContextOptions<PlaybookContext> options) : base(options) { }
 
         //protected override void OnModelCreating(ModelBuilder modelBuilder)
         //{

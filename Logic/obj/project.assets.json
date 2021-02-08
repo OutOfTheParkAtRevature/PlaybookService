@@ -1535,7 +1535,7 @@
           "bin/placeholder/Model.dll": {}
         }
       },
-      "Repo/1.0.0": {
+      "Repository/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
@@ -1544,10 +1544,10 @@
           "Model": "1.0.0"
         },
         "compile": {
-          "bin/placeholder/Repo.dll": {}
+          "bin/placeholder/Repository.dll": {}
         },
         "runtime": {
-          "bin/placeholder/Repo.dll": {}
+          "bin/placeholder/Repository.dll": {}
         }
       }
     }
@@ -5784,10 +5784,10 @@
       "path": "../Models/Model.csproj",
       "msbuildProject": "../Models/Model.csproj"
     },
-    "Repo/1.0.0": {
+    "Repository/1.0.0": {
       "type": "project",
-      "path": "../Repo/Repo.csproj",
-      "msbuildProject": "../Repo/Repo.csproj"
+      "path": "../Repo/Repository.csproj",
+      "msbuildProject": "../Repo/Repository.csproj"
     }
   },
   "projectFileDependencyGroups": {
@@ -5797,7 +5797,7 @@
       "Microsoft.EntityFrameworkCore.SqlServer >= 5.0.2",
       "Microsoft.EntityFrameworkCore.Tools >= 5.0.2",
       "Model >= 1.0.0",
-      "Repo >= 1.0.0"
+      "Repository >= 1.0.0"
     ]
   },
   "packageFolders": {
@@ -5834,8 +5834,8 @@
             "C:\\Users\\Dayton\\Desktop\\RevvyBoi\\P3\\PlaybookService\\Models\\Model.csproj": {
               "projectPath": "C:\\Users\\Dayton\\Desktop\\RevvyBoi\\P3\\PlaybookService\\Models\\Model.csproj"
             },
-            "C:\\Users\\Dayton\\Desktop\\RevvyBoi\\P3\\PlaybookService\\Repo\\Repo.csproj": {
-              "projectPath": "C:\\Users\\Dayton\\Desktop\\RevvyBoi\\P3\\PlaybookService\\Repo\\Repo.csproj"
+            "C:\\Users\\Dayton\\Desktop\\RevvyBoi\\P3\\PlaybookService\\Repo\\Repository.csproj": {
+              "projectPath": "C:\\Users\\Dayton\\Desktop\\RevvyBoi\\P3\\PlaybookService\\Repo\\Repository.csproj"
             }
           }
         }

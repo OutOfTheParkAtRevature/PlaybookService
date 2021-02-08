@@ -1608,7 +1608,7 @@
           "bin/placeholder/Model.dll": {}
         }
       },
-      "Repo/1.0.0": {
+      "Repository/1.0.0": {
         "type": "project",
         "framework": ".NETCoreApp,Version=v3.1",
         "dependencies": {
@@ -1617,10 +1617,10 @@
           "Model": "1.0.0"
         },
         "compile": {
-          "bin/placeholder/Repo.dll": {}
+          "bin/placeholder/Repository.dll": {}
         },
         "runtime": {
-          "bin/placeholder/Repo.dll": {}
+          "bin/placeholder/Repository.dll": {}
         }
       },
       "Service/1.0.0": {
@@ -1630,7 +1630,7 @@
           "Microsoft.EntityFrameworkCore": "5.0.2",
           "Microsoft.EntityFrameworkCore.SqlServer": "5.0.2",
           "Model": "1.0.0",
-          "Repo": "1.0.0"
+          "Repository": "1.0.0"
         },
         "compile": {
           "bin/placeholder/Service.dll": {}
@@ -5980,10 +5980,10 @@
       "path": "../Models/Model.csproj",
       "msbuildProject": "../Models/Model.csproj"
     },
-    "Repo/1.0.0": {
+    "Repository/1.0.0": {
       "type": "project",
-      "path": "../Repo/Repo.csproj",
-      "msbuildProject": "../Repo/Repo.csproj"
+      "path": "../Repo/Repository.csproj",
+      "msbuildProject": "../Repo/Repository.csproj"
     },
     "Service/1.0.0": {
       "type": "project",

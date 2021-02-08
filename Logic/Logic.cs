@@ -1,5 +1,8 @@
-﻿using Models;
+﻿using Microsoft.Extensions.Logging;
+using Models;
 using Models.DataTransfer;
+using Repository;
+using Service;
 using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
@@ -8,6 +11,17 @@ namespace Logic
 {
     public class Logic
     {
+        public Logic() { }
+        public Logic(Repo repo, Mapper mapper, ILogger<Repo> logger)
+        {
+            _repo = repo;
+            _logger = logger;
+            _mapper = mapper;
+        }
+        private readonly Repo _repo;
+        private readonly ILogger<Repo> _logger;
+        private readonly Mapper _mapper;
+
         /// <summary>
         /// Get Playbook
         /// </summary>
