@@ -1,9 +1,9 @@
 # PlaybookService
 
-##Description
+## Description
 Handles drawing and storing plays
 
-##Functionality
+## Functionality
 * Draw plays
 
 ## To-Do List
