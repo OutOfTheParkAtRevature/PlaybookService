@@ -1,9 +1,32 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Threading.Tasks;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.Logging;
+using Model;
+using Repository;
 
-namespace Repo
+namespace Repository
 {
     public class Repo
     {
+        private readonly PlaybookContext _PlaybookContext;
+        private readonly ILogger _logger;
+        public DbSet<Play> plays;
+        public DbSet<Playbook> playbooks;
+
+        public Repo(PlaybookContext playbookContext, ILogger<Repo> logger)
+        {
+            _PlaybookContext = playbookContext;
+            _logger = logger;
+            this.plays = plays;
+            this.playbooks = playbooks;
+        }
+
+        public async Task CommitSave()
+        {
+            await _PlaybookContext.SaveChangesAsync();
+        }
         /// <summary>
         /// Get Playbook
         /// </summary>
@@ -11,7 +34,7 @@ namespace Repo
         /// <returns>PlaybookID</returns>
         public async Task<Playbook> GetPlaybookById(int id)
         {
-            return await _repo.GetPlaybookById(id);
+            return await GetPlaybookById(id);
         }
         /// <summary>
         /// Get list of Playbooks
@@ -19,7 +42,7 @@ namespace Repo
         /// <returns>list of Playbooks</returns>
         public async Task<IEnumerable<Playbook>> GetPlaybooks()
         {
-            return await _repo.GetPlaybooks();
+            return await GetPlaybooks();
         }
         /// <summary>
         /// Create new Playbook and assign it to a team
@@ -32,8 +55,8 @@ namespace Repo
             {
                 TeamID = teamId
             };
-            await _repo.playbooks.AddAsync(newPlayBook);
-            await _repo.CommitSave();
+            await playbooks.AddAsync(newPlayBook);
+            await CommitSave();
             return newPlayBook;
         }
         /// <summary>
@@ -50,8 +73,8 @@ namespace Repo
                 Description = playDto.Description,
                 DrawnPlay = _mapper.ConvertImage(playDto.ImageString)
             };
-            await _repo.plays.AddAsync(newPlay);
-            await _repo.CommitSave();
+            await plays.AddAsync(newPlay);
+            await CommitSave();
             return newPlay;
         }
         /// <summary>
@@ -68,7 +91,7 @@ namespace Repo
                 if (editedPlay.Name != playDto.Name) { editedPlay.Name = playDto.Name; }
                 if (editedPlay.Description != playDto.Description) { editedPlay.Description = playDto.Description; }
                 if (editedPlay.DrawnPlay != playDto.DrawnPlay) { editedPlay.DrawnPlay = playDto.DrawnPlay; }
-                await _repo.CommitSave();
+                await CommitSave();
             }
             return editedPlay;
         }
@@ -79,7 +102,7 @@ namespace Repo
         /// <returns>Play</returns>
         public async Task<Play> GetPlayById(int id)
         {
-            return await _repo.GetPlayById(id);
+            return await GetPlayById(id);
         }
         /// <summary>
         /// Get PlayDto by PlayID
@@ -88,7 +111,7 @@ namespace Repo
         /// <returns></returns>
         public async Task<PlayDto> GetPlayDto(int id)
         {
-            Play play = await _repo.GetPlayById(id);
+            Play play = await GetPlayById(id);
             return _mapper.ConvertToPlayDto(play);
         }
         /// <summary>
@@ -116,8 +139,8 @@ namespace Repo
             Playbook playbook = await GetPlaybookById(id);
             if (playbook != null)
             {
-                _repo.playbooks.Remove(playbook);
-                await _repo.CommitSave();
+                playbooks.Remove(playbook);
+                await CommitSave();
             }
             return playbook;
         }
@@ -131,8 +154,8 @@ namespace Repo
             Play play = await GetPlayById(id);
             if (play != null)
             {
-                _repo.plays.Remove(play);
-                await _repo.CommitSave();
+                plays.Remove(play);
+                await CommitSave();
             }
             return play;
         }

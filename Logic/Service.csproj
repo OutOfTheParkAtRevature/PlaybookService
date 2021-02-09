@@ -1,7 +1,7 @@
 <Project Sdk="Microsoft.NET.Sdk">
 
   <PropertyGroup>
-    <TargetFramework>netcoreapp3.1</TargetFramework>
+    <TargetFramework>netcoreapp5.0</TargetFramework>
   </PropertyGroup>
 
   <ItemGroup>
@@ -19,7 +19,7 @@
 
   <ItemGroup>
     <ProjectReference Include="..\Models\Model.csproj" />
-    <ProjectReference Include="..\Repo\Repo.csproj" />
+    <ProjectReference Include="..\Repo\Repository.csproj" />
   </ItemGroup>
 
 </Project>

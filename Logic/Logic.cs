@@ -1,6 +1,7 @@
 ﻿using System;
 
-namespace Logic
+namespace Service
+
 {
     public class Logic
     {
