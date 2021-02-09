@@ -21,6 +21,10 @@ namespace Repository
             _logger = logger;
         }
 
+        public async Task CommitSave()
+        {
+            await _playbookContext.SaveChangesAsync();
+        }
         public async Task<Playbook> GetPlaybookById(int id)
         {
             return await Playbooks.FindAsync(id);
