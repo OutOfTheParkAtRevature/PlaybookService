@@ -13,5 +13,6 @@ namespace Model
         public Guid Playbookid { get; set; }
         [DisplayName("Team ID")]
         public int TeamID { get; set; }
+        public string Name { get; set; }
     }
 }
