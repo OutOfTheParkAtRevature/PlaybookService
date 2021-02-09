@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging;
 using Models;
 using Models.DataTransfer;
 using Repository;
@@ -7,7 +7,7 @@ using System;
 using System.Collections.Generic;
 using System.Threading.Tasks;
 
-namespace Logic
+namespace Service
 {
     public class Logic
     {
@@ -21,7 +21,7 @@ namespace Logic
         private readonly Repo _repo;
         private readonly ILogger<Repo> _logger;
         private readonly Mapper _mapper;
-
+      
         /// <summary>
         /// Get Playbook
         /// </summary>
@@ -50,6 +50,7 @@ namespace Logic
             {
                 TeamID = teamId
             };
+
             await _repo.playbooks.AddAsync(newPlayBook);
             await _repo.CommitSave();
             return newPlayBook;
@@ -68,7 +69,9 @@ namespace Logic
                 Description = playDto.Description,
                 DrawnPlay = _mapper.ConvertImage(playDto.ImageString)
             };
+
             await _repo.plays.AddAsync(newPlay);
+
             await _repo.CommitSave();
             return newPlay;
         }
