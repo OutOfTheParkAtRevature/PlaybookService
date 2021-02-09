@@ -19,11 +19,9 @@ namespace PlaybookService
 {
     public class Startup
     {
-        public IConfiguration _configuration { get; }
-
         public Startup(IConfiguration configuration)
         {
-            _configuration = configuration;
+            Configuration = configuration;
         }
 
         public IConfiguration Configuration { get; }
@@ -31,16 +29,17 @@ namespace PlaybookService
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddScoped<PlaybookContext>();
             services.AddScoped<Logic>();
+            services.AddScoped<Mapper>();
             services.AddScoped<Repo>();
             services.AddControllers();
-            services.AddDbContext<PlaybookContext>(options =>
-                options.UseSqlServer(_configuration.GetConnectionString("LocalDB")));
-
             services.AddSwaggerGen(c =>
             {
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "PlaybookService", Version = "v1" });
             });
+
+            services.AddDbContext<PlaybookContext>(options => options.UseSqlServer(Configuration.GetConnectionString("LocalDB")));
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
