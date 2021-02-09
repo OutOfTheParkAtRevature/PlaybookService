@@ -1,23 +1,18 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.ComponentModel.DataAnnotations;
-using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
 
-
-namespace Models
+namespace Model
 {
     public class Playbook
     {
         [Key]
-        [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [DisplayName("Playbook ID")]
-        public int PlaybookID { get; set; }
+        public Guid Playbookid { get; set; }
         [DisplayName("Team ID")]
-        [ForeignKey("TeamID")]
         public int TeamID { get; set; }
+        public string Name { get; set; }
     }
 }
