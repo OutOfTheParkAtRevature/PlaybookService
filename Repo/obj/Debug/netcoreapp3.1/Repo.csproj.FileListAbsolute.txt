@@ -1,4 +1,0 @@
-F:\Visual Studio Projects\P3_LeagueManager\PlaybookService\Repo\bin\Debug\netcoreapp3.1\Models.dll
-F:\Visual Studio Projects\P3_LeagueManager\PlaybookService\Repo\obj\Debug\netcoreapp3.1\Repo.AssemblyInfoInputs.cache
-F:\Visual Studio Projects\P3_LeagueManager\PlaybookService\Repo\obj\Debug\netcoreapp3.1\Repo.AssemblyInfo.cs
-F:\Visual Studio Projects\P3_LeagueManager\PlaybookService\Repo\obj\Debug\netcoreapp3.1\Repo.csprojAssemblyReference.cache
