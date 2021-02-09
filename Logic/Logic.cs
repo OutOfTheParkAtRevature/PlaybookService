@@ -1,4 +1,4 @@
-﻿using Microsoft.Extensions.Logging;
+using Microsoft.Extensions.Logging;
 using Models;
 using Models.DataTransfer;
 using Repository;
@@ -15,12 +15,13 @@ namespace Service
         public Logic(Repo repo, Mapper mapper, ILogger<Repo> logger)
         {
             _repo = repo;
-            _mapper = mapper;
             _logger = logger;
+            _mapper = mapper;
         }
         private readonly Repo _repo;
-        private readonly Mapper _mapper;
         private readonly ILogger<Repo> _logger;
+        private readonly Mapper _mapper;
+      
         /// <summary>
         /// Get Playbook
         /// </summary>
@@ -49,7 +50,8 @@ namespace Service
             {
                 TeamID = teamId
             };
-            await _repo.Playbooks.AddAsync(newPlayBook);
+
+            await _repo.playbooks.AddAsync(newPlayBook);
             await _repo.CommitSave();
             return newPlayBook;
         }
@@ -67,7 +69,9 @@ namespace Service
                 Description = playDto.Description,
                 DrawnPlay = _mapper.ConvertImage(playDto.ImageString)
             };
-            await _repo.Plays.AddAsync(newPlay);
+
+            await _repo.plays.AddAsync(newPlay);
+
             await _repo.CommitSave();
             return newPlay;
         }
@@ -133,7 +137,7 @@ namespace Service
             Playbook playbook = await GetPlaybookById(id);
             if (playbook != null)
             {
-                _repo.Playbooks.Remove(playbook);
+                _repo.playbooks.Remove(playbook);
                 await _repo.CommitSave();
             }
             return playbook;
@@ -148,7 +152,7 @@ namespace Service
             Play play = await GetPlayById(id);
             if (play != null)
             {
-                _repo.Plays.Remove(play);
+                _repo.plays.Remove(play);
                 await _repo.CommitSave();
             }
             return play;
