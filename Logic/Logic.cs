@@ -27,7 +27,7 @@ namespace Service
         /// </summary>
         /// <param name="id">PlaybookID</param>
         /// <returns>PlaybookID</returns>
-        public async Task<Playbook> GetPlaybookById(int id)
+        public async Task<Playbook> GetPlaybookById(Guid id)
         {
             return await _repo.GetPlaybookById(id);
         }
@@ -44,14 +44,15 @@ namespace Service
         /// </summary>
         /// <param name="teamId">TeamID</param>
         /// <returns>Playbook</returns>
-        public async Task<Playbook> CreatePlaybook(int teamId)
+        public async Task<Playbook> CreatePlaybook(Guid teamId, string name)
         {
             Playbook newPlayBook = new Playbook()
             {
-                TeamID = teamId
+                TeamID = teamId,
+                Name = name
             };
 
-            await _repo.playbooks.AddAsync(newPlayBook);
+            await _repo.Playbooks.AddAsync(newPlayBook);
             await _repo.CommitSave();
             return newPlayBook;
         }
@@ -70,7 +71,7 @@ namespace Service
                 DrawnPlay = _mapper.ConvertImage(playDto.ImageString)
             };
 
-            await _repo.plays.AddAsync(newPlay);
+            await _repo.Plays.AddAsync(newPlay);
 
             await _repo.CommitSave();
             return newPlay;
@@ -81,7 +82,7 @@ namespace Service
         /// <param name="playId">Play to edit</param>
         /// <param name="playDto">New Play info</param>
         /// <returns>edited Play</returns>
-        public async Task<Play> EditPlay(int playId, PlayDto playDto)
+        public async Task<Play> EditPlay(Guid playId, PlayDto playDto)
         {
             Play editedPlay = await GetPlayById(playId);
             if (editedPlay != null)
@@ -98,7 +99,7 @@ namespace Service
         /// </summary>
         /// <param name="id">PlayID</param>
         /// <returns>Play</returns>
-        public async Task<Play> GetPlayById(int id)
+        public async Task<Play> GetPlayById(Guid id)
         {
             return await _repo.GetPlayById(id);
         }
@@ -107,7 +108,7 @@ namespace Service
         /// </summary>
         /// <param name="id"></param>
         /// <returns></returns>
-        public async Task<PlayDto> GetPlayDto(int id)
+        public async Task<PlayDto> GetPlayDto(Guid id)
         {
             Play play = await _repo.GetPlayById(id);
             return _mapper.ConvertToPlayDto(play);
@@ -132,12 +133,12 @@ namespace Service
         /// </summary>
         /// <param name="id">PlaybookID</param>
         /// <returns>deleted Playbook</returns>
-        public async Task<Playbook> DeletePlaybook(int id)
+        public async Task<Playbook> DeletePlaybook(Guid id)
         {
             Playbook playbook = await GetPlaybookById(id);
             if (playbook != null)
             {
-                _repo.playbooks.Remove(playbook);
+                _repo.Playbooks.Remove(playbook);
                 await _repo.CommitSave();
             }
             return playbook;
@@ -147,15 +148,23 @@ namespace Service
         /// </summary>
         /// <param name="id">PlayID</param>
         /// <returns>deleted Play</returns>
-        public async Task<Play> DeletePlay(int id)
+        public async Task<Play> DeletePlay(Guid id)
         {
             Play play = await GetPlayById(id);
             if (play != null)
             {
-                _repo.plays.Remove(play);
+                _repo.Plays.Remove(play);
                 await _repo.CommitSave();
             }
             return play;
+        }
+        public async Task<IEnumerable<Play>> GetPlaysByPlaybookId(Guid id)
+        {
+            return await _repo.GetPlaysByPlaybookId(id);
+        }
+        public async Task<IEnumerable<Playbook>> GetPlaybooksByTeamId(Guid id)
+        {
+            return await _repo.GetPlaybooksByTeamId(id);
         }
     }
 }
