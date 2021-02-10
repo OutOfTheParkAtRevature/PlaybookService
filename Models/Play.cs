@@ -14,10 +14,10 @@ namespace Models
         [Key]
         [DatabaseGenerated(DatabaseGeneratedOption.Identity)]
         [DisplayName("Play ID")]
-        public int PlayID { get; set; }
+        public Guid PlayID { get; set; }
         [DisplayName("Playbook ID")]
         [ForeignKey("PlaybookID")]
-        public int PlaybookId { get; set; }
+        public Guid PlaybookId { get; set; }
         [DisplayName("Play Name")]
         public string Name { get; set; }
         [DisplayName("Description")]

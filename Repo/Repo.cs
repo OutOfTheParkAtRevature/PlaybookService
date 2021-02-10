@@ -4,6 +4,7 @@ using Models;
 using Models.DataTransfer;
 using System;
 using System.Collections.Generic;
+using System.Linq;
 using System.Threading.Tasks;
 
 namespace Repository
@@ -14,15 +15,15 @@ namespace Repository
         private readonly PlaybookContext _playbookContext;
         private readonly ILogger _logger;
 
-        public DbSet<Playbook> playbooks;
-        public DbSet<Play> plays;
+        public DbSet<Playbook> Playbooks;
+        public DbSet<Play> Plays;
 
         public Repo(PlaybookContext playbookContext, ILogger<Repo> logger)
         {
             _playbookContext = playbookContext;
             _logger = logger;
-            this.playbooks = _playbookContext.Playbooks;
-            this.plays = _playbookContext.Plays;
+            this.Playbooks = _playbookContext.Playbooks;
+            this.Plays = _playbookContext.Plays;
 
         }
 
@@ -30,23 +31,30 @@ namespace Repository
         {
             await _playbookContext.SaveChangesAsync();
         }
-        public async Task<Playbook> GetPlaybookById(int id)
+        public async Task<Playbook> GetPlaybookById(Guid id)
         {
 
-            return await playbooks.FindAsync(id);
+            return await Playbooks.FindAsync(id);
         }
         public async Task<IEnumerable<Playbook>> GetPlaybooks()
         {
-            return await playbooks.ToListAsync();
+            return await Playbooks.ToListAsync();
         }
-        public async Task<Play> GetPlayById(int id)
+        public async Task<Play> GetPlayById(Guid id)
         {
-            return await plays.FindAsync(id);
+            return await Plays.FindAsync(id);
         }
         public async Task<IEnumerable<Play>> GetPlays()
         {
-            return await plays.ToListAsync();
-
+            return await Plays.ToListAsync();
+        }
+        public async Task<IEnumerable<Play>> GetPlaysByPlaybookId(Guid id)
+        {
+            return await Plays.Where(x => x.PlaybookId == id).ToListAsync();
+        }
+        public async Task<IEnumerable<Playbook>> GetPlaybooksByTeamId(Guid id)
+        {
+            return await Playbooks.Where(x => x.TeamID == id).ToListAsync();
         }
     }
 }
