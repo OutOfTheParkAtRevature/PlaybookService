@@ -1,7 +1,8 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging.Abstractions;
-using Model;
+using Models;
 using System;
+using System.Collections.Generic;
 using Xunit;
 
 namespace Repository.Tests
@@ -15,7 +16,7 @@ namespace Repository.Tests
         public async void TestForCommitSave()
         {
             var options = new DbContextOptionsBuilder<PlaybookContext>()
-            .UseInMemoryDatabase(databaseName: "p2newsetuptest")
+            .UseInMemoryDatabase(databaseName: "p3PlaybookService")
             .Options;
 
             using (var context = new PlaybookContext(options))
@@ -26,8 +27,10 @@ namespace Repository.Tests
                 Repo r = new Repo(context, new NullLogger<Repo>());
                 Playbook playbook = new Playbook
                 {
-                    PlaybookID = 1,
-                    TeamID = 2
+                    Playbookid = Guid.NewGuid(),
+                    TeamID = Guid.NewGuid(),
+                    Name = "myplaybook",
+                    InDev = true
                 };
 
                 r.Playbooks.Add(playbook);
@@ -43,7 +46,7 @@ namespace Repository.Tests
         public async void TestForGetPlaybooks()
         {
             var options = new DbContextOptionsBuilder<PlaybookContext>()
-            .UseInMemoryDatabase(databaseName: "p2newsetuptest")
+            .UseInMemoryDatabase(databaseName: "p3PlaybookService")
             .Options;
 
             using (var context = new PlaybookContext(options))
@@ -54,8 +57,10 @@ namespace Repository.Tests
                 Repo r = new Repo(context, new NullLogger<Repo>());
                 var playbook = new Playbook
                 {
-                    PlaybookID = 1,
-                    TeamID = 1
+                    Playbookid = Guid.NewGuid(),
+                    TeamID = Guid.NewGuid(),
+                    Name = "myplaybook",
+                    InDev = true
                 };
 
                 r.Playbooks.Add(playbook);
@@ -71,7 +76,7 @@ namespace Repository.Tests
         public async void TestForGetPlaybookById()
         {
             var options = new DbContextOptionsBuilder<PlaybookContext>()
-            .UseInMemoryDatabase(databaseName: "p2newsetuptest")
+            .UseInMemoryDatabase(databaseName: "p3PlaybookService")
             .Options;
 
             using (var context = new PlaybookContext(options))
@@ -82,12 +87,14 @@ namespace Repository.Tests
                 Repo r = new Repo(context, new NullLogger<Repo>());
                 var playbook = new Playbook
                 {
-                    PlaybookID = 1,
-                    TeamID = 1
+                    Playbookid = Guid.NewGuid(),
+                    TeamID = Guid.NewGuid(),
+                    Name = "myplaybook",
+                    InDev = true
                 };
 
                 r.Playbooks.Add(playbook);
-                var listOfPlaybooks = await r.GetPlaybookById(playbook.PlaybookID);
+                var listOfPlaybooks = await r.GetPlaybookById(playbook.Playbookid);
                 Assert.True(listOfPlaybooks.Equals(playbook));
             }
         }
@@ -99,7 +106,7 @@ namespace Repository.Tests
         public async void TestForGetPlays()
         {
             var options = new DbContextOptionsBuilder<PlaybookContext>()
-            .UseInMemoryDatabase(databaseName: "p2newsetuptest")
+            .UseInMemoryDatabase(databaseName: "p3PlaybookService")
             .Options;
 
             using (var context = new PlaybookContext(options))
@@ -110,8 +117,8 @@ namespace Repository.Tests
                 Repo r = new Repo(context, new NullLogger<Repo>());
                 var play = new Play
                 {
-                    PlayID = 1,
-                    PlaybookId = 1,
+                    PlayID = Guid.NewGuid(),
+                    PlaybookId = Guid.NewGuid(),
                     Name = "Tackle",
                     Description = "Tackle other players",
                     DrawnPlay = new byte[1]
@@ -130,7 +137,7 @@ namespace Repository.Tests
         public async void TestForGetPlayById()
         {
             var options = new DbContextOptionsBuilder<PlaybookContext>()
-            .UseInMemoryDatabase(databaseName: "p2newsetuptest")
+            .UseInMemoryDatabase(databaseName: "p3PlaybookService")
             .Options;
 
             using (var context = new PlaybookContext(options))
@@ -141,8 +148,8 @@ namespace Repository.Tests
                 Repo r = new Repo(context, new NullLogger<Repo>());
                 var play = new Play
                 {
-                    PlayID = 1,
-                    PlaybookId = 1,
+                    PlayID = Guid.NewGuid(),
+                    PlaybookId = Guid.NewGuid(),
                     Name = "Tackle",
                     Description = "Tackle other players",
                     DrawnPlay = new byte[1]
@@ -151,6 +158,71 @@ namespace Repository.Tests
                 r.Plays.Add(play);
                 var listOfPlays = await r.GetPlayById(play.PlayID);
                 Assert.True(listOfPlays.Equals(play));
+            }
+        }
+
+        /// <summary>
+        /// Tests the GetPlaysByPlaybookId() method of Repo
+        /// </summary>
+        [Fact]
+        public async void TestForGetPlaysByPlaybookId()
+        {
+            var options = new DbContextOptionsBuilder<PlaybookContext>()
+            .UseInMemoryDatabase(databaseName: "p3PlaybookService")
+            .Options;
+
+            using (var context = new PlaybookContext(options))
+            {
+                context.Database.EnsureDeleted();
+                context.Database.EnsureCreated();
+
+                Repo r = new Repo(context, new NullLogger<Repo>());
+                var play = new Play
+                {
+                    PlayID = Guid.NewGuid(),
+                    PlaybookId = Guid.NewGuid(),
+                    Name = "Tackle",
+                    Description = "Tackle other players",
+                    DrawnPlay = new byte[1]
+                };
+
+                r.Plays.Add(play);
+                await r.CommitSave();
+                var listOfPlays = await r.GetPlaysByPlaybookId(play.PlaybookId);
+                var castedList = (List<Play>)listOfPlays;
+                Assert.True(castedList[0].Equals(play));
+            }
+        }
+
+        /// <summary>
+        /// Tests the GetPlaybooksByTeamId() method of Repo
+        /// </summary>
+        [Fact]
+        public async void TestForGetPlaybooksByTeamId()
+        {
+            var options = new DbContextOptionsBuilder<PlaybookContext>()
+            .UseInMemoryDatabase(databaseName: "p3PlaybookService")
+            .Options;
+
+            using (var context = new PlaybookContext(options))
+            {
+                context.Database.EnsureDeleted();
+                context.Database.EnsureCreated();
+
+                Repo r = new Repo(context, new NullLogger<Repo>());
+                var playbook = new Playbook
+                {
+                    Playbookid = Guid.NewGuid(),
+                    TeamID = Guid.NewGuid(),
+                    Name = "myplaybook",
+                    InDev = true
+                };
+
+                r.Playbooks.Add(playbook);
+                await r.CommitSave();
+                var listOfPlaybooks = await r.GetPlaybooksByTeamId(playbook.TeamID);
+                var castedList = (List<Playbook>)listOfPlaybooks;
+                Assert.True(castedList[0].Equals(playbook));
             }
         }
     }

@@ -33,8 +33,10 @@ namespace Model.Tests
         {
             var playbook = new Playbook()
             {
-                PlaybookID = 1,
-                TeamID = 2
+                Playbookid = Guid.NewGuid(),
+                TeamID = Guid.NewGuid(),
+                Name = "myplaybook",
+                InDev = true
             };
 
             var results = ValidateModel(playbook);
@@ -49,8 +51,8 @@ namespace Model.Tests
         {
             var play = new Play()
             {
-                PlayID = 1,
-                PlaybookId = 1,
+                PlayID = Guid.NewGuid(),
+                PlaybookId = Guid.NewGuid(),
                 Name = "Tackle",
                 Description = "Tackles other players",
                 DrawnPlay = new byte[1]
@@ -68,8 +70,8 @@ namespace Model.Tests
         {
             var play = new PlayDto()
             {
-                PlayID = 4,
-                PlaybookID = 1,
+                PlayID = Guid.NewGuid(),
+                PlaybookID = Guid.NewGuid(),
                 Name = "tackles",
                 Description = "tackle other players",
                 DrawnPlay = new byte[1],

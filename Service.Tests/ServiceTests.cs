@@ -1,10 +1,10 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging.Abstractions;
-using Model;
 using Models;
 using Models.DataTransfer;
 using Repository;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using Xunit;
 
@@ -39,10 +39,10 @@ namespace Service.Tests
             Mapper mapper = new Mapper();
             var play = new Play()
             {
-                PlayID = 6,
+                PlayID = Guid.NewGuid(),
                 Name = "Tackle",
                 Description = "Tackle other players",
-                PlaybookId = 3,
+                PlaybookId = Guid.NewGuid(),
                 DrawnPlay = new byte[1]
             };
 
@@ -62,7 +62,7 @@ namespace Service.Tests
         public async void TestForGetPlaybooks()
         {
             var options = new DbContextOptionsBuilder<PlaybookContext>()
-            .UseInMemoryDatabase(databaseName: "p2newsetuptest")
+            .UseInMemoryDatabase(databaseName: "p3PlaybookService")
             .Options;
 
             using (var context = new PlaybookContext(options))
@@ -75,8 +75,10 @@ namespace Service.Tests
                 Logic logic = new Logic(r, mapper, new NullLogger<Repo>());
                 var playbook = new Playbook
                 {
-                    PlaybookID = 1,
-                    TeamID = 1
+                    Playbookid = Guid.NewGuid(),
+                    TeamID = Guid.NewGuid(),
+                    Name = "myplaybook",
+                    InDev = true
                 };
 
                 r.Playbooks.Add(playbook);
@@ -92,7 +94,7 @@ namespace Service.Tests
         public async void TestForGetPlaybookById()
         {
             var options = new DbContextOptionsBuilder<PlaybookContext>()
-            .UseInMemoryDatabase(databaseName: "p2newsetuptest")
+            .UseInMemoryDatabase(databaseName: "p3PlaybookService")
             .Options;
 
             using (var context = new PlaybookContext(options))
@@ -105,13 +107,49 @@ namespace Service.Tests
                 Logic logic = new Logic(r, mapper,  new NullLogger<Repo>());
                 var playbook = new Playbook
                 {
-                    PlaybookID = 1,
-                    TeamID = 1
+                    Playbookid = Guid.NewGuid(),
+                    TeamID = Guid.NewGuid(),
+                    Name = "myplaybook",
+                    InDev = true
                 };
 
-                r.playbooks.Add(playbook);
-                var listOfPlaybooks = await logic.GetPlaybookById(playbook.PlaybookID);
+                r.Playbooks.Add(playbook);
+                var listOfPlaybooks = await logic.GetPlaybookById(playbook.Playbookid);
                 Assert.True(listOfPlaybooks.Equals(playbook));
+            }
+        }
+
+        /// <summary>
+        /// Tests the GetPlaybooksByTeamid() method of Logic
+        /// </summary>
+        [Fact]
+        public async void TestForGetPlaybooksByTeamId()
+        {
+            var options = new DbContextOptionsBuilder<PlaybookContext>()
+            .UseInMemoryDatabase(databaseName: "p3PlaybookService")
+            .Options;
+
+            using (var context = new PlaybookContext(options))
+            {
+                context.Database.EnsureDeleted();
+                context.Database.EnsureCreated();
+
+                Repo r = new Repo(context, new NullLogger<Repo>());
+                Mapper mapper = new Mapper();
+                Logic logic = new Logic(r, mapper, new NullLogger<Repo>());
+                var playbook = new Playbook
+                {
+                    Playbookid = Guid.NewGuid(),
+                    TeamID = Guid.NewGuid(),
+                    Name = "myplaybook",
+                    InDev = true
+                };
+
+                r.Playbooks.Add(playbook);
+                await r.CommitSave();
+                var listOfPlaybooks = await logic.GetPlaybooksByTeamId(playbook.TeamID);
+                var castedList = (List<Playbook>)listOfPlaybooks;
+                Assert.True(castedList[0].Equals(playbook));
             }
         }
 
@@ -123,7 +161,7 @@ namespace Service.Tests
         public async void TestForCreatePlaybook()
         {
             var options = new DbContextOptionsBuilder<PlaybookContext>()
-            .UseInMemoryDatabase(databaseName: "p2newsetuptest")
+            .UseInMemoryDatabase(databaseName: "p3PlaybookService")
             .Options;
 
             using (var context = new PlaybookContext(options))
@@ -134,14 +172,14 @@ namespace Service.Tests
                 Repo r = new Repo(context, new NullLogger<Repo>());
                 Mapper mapper = new Mapper();
                 Logic logic = new Logic(r, mapper, new NullLogger<Repo>());
-                Team team = new Team()
+
+                var playbook = new Playbook
                 {
-                    TeamID = 1,
-                    Name = "Broncoes",
-                    Wins = 2,
-                    Losses = 0
+                    TeamID = Guid.NewGuid(),
+                    Name = "myplaybook"
                 };
-                var createPlaybook = await logic.CreatePlaybook(team.TeamID);
+
+                var createPlaybook = await logic.CreatePlaybook(playbook.TeamID, playbook.Name);
 
                 //Assert.Equal(1, context.Playbooks.CountAsync().Result);
 
@@ -159,7 +197,7 @@ namespace Service.Tests
         public async void TestForCreatePlay()
         {
             var options = new DbContextOptionsBuilder<PlaybookContext>()
-            .UseInMemoryDatabase(databaseName: "p2newsetuptest")
+            .UseInMemoryDatabase(databaseName: "p3PlaybookService")
             .Options;
 
             using (var context = new PlaybookContext(options))
@@ -172,7 +210,7 @@ namespace Service.Tests
                 Logic logic = new Logic(r, mapper, new NullLogger<Repo>());
                 PlayDto play = new PlayDto()
                 {
-                    PlaybookID = 1,
+                    PlaybookID = Guid.NewGuid(),
                     Name = "Tackle",
                     Description = "Tackle other players",
                     ImageString = "Football,football,football"
@@ -190,7 +228,7 @@ namespace Service.Tests
         public async void TestForEditPlay()
         {
             var options = new DbContextOptionsBuilder<PlaybookContext>()
-            .UseInMemoryDatabase(databaseName: "p2newsetuptest")
+            .UseInMemoryDatabase(databaseName: "p3PlaybookService")
             .Options;
 
             using (var context = new PlaybookContext(options))
@@ -203,19 +241,19 @@ namespace Service.Tests
                 Logic logic = new Logic(r, mapper, new NullLogger<Repo>());
                 var play = new Play()
                 {
-                    PlayID = 1,
-                    PlaybookId = 1,
+                    PlayID = Guid.NewGuid(),
+                    PlaybookId = Guid.NewGuid(),
                     Name = "Tackle",
                     Description = "Tackle the player",
                     DrawnPlay = new byte[1]
                 };
 
-                r.plays.Add(play);
+                r.Plays.Add(play);
                 await r.CommitSave();
 
                 var play2 = new PlayDto()
                 {
-                    PlaybookID = 1,
+                    PlaybookID = Guid.NewGuid(),
                     Name = "Tackle",
                     Description = "Tackle the quarterback",
                     DrawnPlay = new byte[1]
@@ -233,7 +271,7 @@ namespace Service.Tests
         public async void TestForGetPlayById()
         {
             var options = new DbContextOptionsBuilder<PlaybookContext>()
-            .UseInMemoryDatabase(databaseName: "p2newsetuptest")
+            .UseInMemoryDatabase(databaseName: "p3PlaybookService")
             .Options;
 
             using (var context = new PlaybookContext(options))
@@ -246,8 +284,8 @@ namespace Service.Tests
                 Logic logic = new Logic(r, mapper, new NullLogger<Repo>());
                 var play = new Play
                 {
-                    PlayID = 1,
-                    PlaybookId = 1,
+                    PlayID = Guid.NewGuid(),
+                    PlaybookId = Guid.NewGuid(),
                     Name = "Tackle",
                     Description = "Tackle other players",
                     DrawnPlay = new byte[1]
@@ -260,13 +298,13 @@ namespace Service.Tests
         }
 
         /// <summary>
-        /// Tests the GetPlayDto() method of Logic
+        /// Tests the GetPlaysByPlaybookId() method of Logic
         /// </summary>
         [Fact]
-        public async void TestForGetPlayDto()
+        public async void TestForGetPlaysByPlaybookId()
         {
             var options = new DbContextOptionsBuilder<PlaybookContext>()
-            .UseInMemoryDatabase(databaseName: "p2newsetuptest")
+            .UseInMemoryDatabase(databaseName: "p3PlaybookService")
             .Options;
 
             using (var context = new PlaybookContext(options))
@@ -279,8 +317,43 @@ namespace Service.Tests
                 Logic logic = new Logic(r, mapper, new NullLogger<Repo>());
                 var play = new Play
                 {
-                    PlayID = 1,
-                    PlaybookId = 1,
+                    PlayID = Guid.NewGuid(),
+                    PlaybookId = Guid.NewGuid(),
+                    Name = "Tackle",
+                    Description = "Tackle other players",
+                    DrawnPlay = new byte[1]
+                };
+
+                r.Plays.Add(play);
+                await r.CommitSave();
+                var listOfPlays = await logic.GetPlaysByPlaybookId(play.PlaybookId);
+                var castedList = (List<Play>)listOfPlays;
+                Assert.True(castedList[0].Equals(play));
+            }
+        }
+
+        /// <summary>
+        /// Tests the GetPlayDto() method of Logic
+        /// </summary>
+        [Fact]
+        public async void TestForGetPlayDto()
+        {
+            var options = new DbContextOptionsBuilder<PlaybookContext>()
+            .UseInMemoryDatabase(databaseName: "p3PlaybookService")
+            .Options;
+
+            using (var context = new PlaybookContext(options))
+            {
+                context.Database.EnsureDeleted();
+                context.Database.EnsureCreated();
+
+                Repo r = new Repo(context, new NullLogger<Repo>());
+                Mapper mapper = new Mapper();
+                Logic logic = new Logic(r, mapper, new NullLogger<Repo>());
+                var play = new Play
+                {
+                    PlayID = Guid.NewGuid(),
+                    PlaybookId = Guid.NewGuid(),
                     Name = "Tackle",
                     Description = "Tackle other players",
                     DrawnPlay = new byte[1]
@@ -299,7 +372,7 @@ namespace Service.Tests
         public async void TestForGetPlays()
         {
             var options = new DbContextOptionsBuilder<PlaybookContext>()
-            .UseInMemoryDatabase(databaseName: "p2newsetuptest")
+            .UseInMemoryDatabase(databaseName: "p3PlaybookService")
             .Options;
 
             using (var context = new PlaybookContext(options))
@@ -312,8 +385,8 @@ namespace Service.Tests
                 Logic logic = new Logic(r, mapper, new NullLogger<Repo>());
                 var play = new Play
                 {
-                    PlayID = 8,
-                    PlaybookId = 5,
+                    PlayID = Guid.NewGuid(),
+                    PlaybookId = Guid.NewGuid(),
                     Name = "Tackle",
                     Description = "Tackle other players",
                     DrawnPlay = null
@@ -336,7 +409,7 @@ namespace Service.Tests
         public async void TestForDeletePlay()
         {
             var options = new DbContextOptionsBuilder<PlaybookContext>()
-            .UseInMemoryDatabase(databaseName: "p2newsetuptest")
+            .UseInMemoryDatabase(databaseName: "p3PlaybookService")
             .Options;
 
             using (var context = new PlaybookContext(options))
@@ -349,15 +422,15 @@ namespace Service.Tests
                 Logic logic = new Logic(r, mapper, new NullLogger<Repo>());
                 var play = new Play()
                 {
-                    PlayID = 1,
-                    PlaybookId = 1,
+                    PlayID = Guid.NewGuid(),
+                    PlaybookId = Guid.NewGuid(),
                     Name = "Run",
                     Description = "Run to endzone",
                     DrawnPlay = new byte[1]
                 };
                 r.Plays.Add(play);
                 await r.CommitSave();
-                var deleteEmpty = await logic.DeletePlay(3);
+                var deleteEmpty = await logic.DeletePlay(Guid.NewGuid());
                 Assert.Contains<Play>(play, context.Plays);
                 var deletePlay = await logic.DeletePlay(play.PlayID);
                 var countPlays = from p in context.Plays
@@ -381,7 +454,7 @@ namespace Service.Tests
         public async void TestForDeletePlaybook()
         {
             var options = new DbContextOptionsBuilder<PlaybookContext>()
-            .UseInMemoryDatabase(databaseName: "p2newsetuptest")
+            .UseInMemoryDatabase(databaseName: "p3PlaybookService")
             .Options;
 
             using (var context = new PlaybookContext(options))
@@ -394,16 +467,18 @@ namespace Service.Tests
                 Logic logic = new Logic(r, mapper, new NullLogger<Repo>());
                 var playbook = new Playbook()
                 {
-                    PlaybookID = 25,
-                    TeamID = 13
+                    Playbookid = Guid.NewGuid(),
+                    TeamID = Guid.NewGuid(),
+                    Name = "myplaybook",
+                    InDev = true
                 };
                 r.Playbooks.Add(playbook);
                 await r.CommitSave();
-                var deleteEmpty = await logic.DeletePlaybook(3);
+                var deleteEmpty = await logic.DeletePlaybook(Guid.NewGuid());
                 Assert.Contains<Playbook>(playbook, context.Playbooks);
-                var deletePlaybook = await logic.DeletePlaybook(playbook.PlaybookID);
+                var deletePlaybook = await logic.DeletePlaybook(playbook.Playbookid);
                 var countPlaybooks = from p in context.Playbooks
-                                     where p.PlaybookID == playbook.PlaybookID
+                                     where p.Playbookid == playbook.Playbookid
                                      select p;
                 int count = 0;
                 foreach (Playbook playbooks in countPlaybooks)
