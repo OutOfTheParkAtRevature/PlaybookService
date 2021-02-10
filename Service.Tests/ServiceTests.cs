@@ -1,5 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging.Abstractions;
+using Model;
 using Models;
 using Models.DataTransfer;
 using Repository;
@@ -108,7 +109,7 @@ namespace Service.Tests
                     TeamID = 1
                 };
 
-                r.Playbooks.Add(playbook);
+                r.playbooks.Add(playbook);
                 var listOfPlaybooks = await logic.GetPlaybookById(playbook.PlaybookID);
                 Assert.True(listOfPlaybooks.Equals(playbook));
             }
@@ -209,7 +210,7 @@ namespace Service.Tests
                     DrawnPlay = new byte[1]
                 };
 
-                r.Plays.Add(play);
+                r.plays.Add(play);
                 await r.CommitSave();
 
                 var play2 = new PlayDto()

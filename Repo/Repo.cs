@@ -1,4 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Models;
 using Models.DataTransfer;
@@ -13,12 +13,17 @@ namespace Repository
 
         private readonly PlaybookContext _playbookContext;
         private readonly ILogger _logger;
-        public DbSet<Play> Plays;
-        public DbSet<Playbook> Playbooks;
-        public Repo(PlaybookContext progContext, ILogger<Repo> logger)
+
+        public DbSet<Playbook> playbooks;
+        public DbSet<Play> plays;
+
+        public Repo(PlaybookContext playbookContext, ILogger<Repo> logger)
         {
-            _playbookContext = progContext;
+            _playbookContext = playbookContext;
             _logger = logger;
+            this.playbooks = _playbookContext.Playbooks;
+            this.plays = _playbookContext.Plays;
+
         }
 
         public async Task CommitSave()
@@ -27,19 +32,21 @@ namespace Repository
         }
         public async Task<Playbook> GetPlaybookById(int id)
         {
-            return await Playbooks.FindAsync(id);
+
+            return await playbooks.FindAsync(id);
         }
         public async Task<IEnumerable<Playbook>> GetPlaybooks()
         {
-            return await Playbooks.ToListAsync();
+            return await playbooks.ToListAsync();
         }
         public async Task<Play> GetPlayById(int id)
         {
-            return await Plays.FindAsync(id);
+            return await plays.FindAsync(id);
         }
         public async Task<IEnumerable<Play>> GetPlays()
         {
-            return await Plays.ToListAsync();
+            return await plays.ToListAsync();
+
         }
     }
 }
