@@ -158,10 +158,20 @@ namespace Service
             }
             return play;
         }
+        /// <summary>
+        /// returns a list of plays for a playbook by the playbookID
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<IEnumerable<Play>> GetPlaysByPlaybookId(Guid id)
         {
             return await _repo.GetPlaysByPlaybookId(id);
         }
+        /// <summary>
+        /// returns a list of playbooks by the TeamId
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<IEnumerable<Playbook>> GetPlaybooksByTeamId(Guid id)
         {
             return await _repo.GetPlaybooksByTeamId(id);

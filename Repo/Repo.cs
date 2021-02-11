@@ -26,32 +26,63 @@ namespace Repository
             this.Plays = _playbookContext.Plays;
 
         }
-
+        /// <summary>
+        ///  saves changes to the database
+        /// </summary>
+        /// <returns></returns>
         public async Task CommitSave()
         {
             await _playbookContext.SaveChangesAsync();
         }
+        /// <summary>
+        /// returns a Playbood by the playbookID
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<Playbook> GetPlaybookById(Guid id)
         {
 
             return await Playbooks.FindAsync(id);
         }
+        /// <summary>
+        /// returns all playBooks
+        /// </summary>
+        /// <returns></returns>
         public async Task<IEnumerable<Playbook>> GetPlaybooks()
         {
             return await Playbooks.ToListAsync();
         }
+        /// <summary>
+        ///  returns a play by the playID
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<Play> GetPlayById(Guid id)
         {
             return await Plays.FindAsync(id);
         }
+        /// <summary>
+        /// returns all plays
+        /// </summary>
+        /// <returns></returns>
         public async Task<IEnumerable<Play>> GetPlays()
         {
             return await Plays.ToListAsync();
         }
+        /// <summary>
+        /// returns all plays with the playbookID
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<IEnumerable<Play>> GetPlaysByPlaybookId(Guid id)
         {
             return await Plays.Where(x => x.PlaybookId == id).ToListAsync();
         }
+        /// <summary>
+        /// returns all of the playbooks where TeamID == id
+        /// </summary>
+        /// <param name="id"></param>
+        /// <returns></returns>
         public async Task<IEnumerable<Playbook>> GetPlaybooksByTeamId(Guid id)
         {
             return await Playbooks.Where(x => x.TeamID == id).ToListAsync();
