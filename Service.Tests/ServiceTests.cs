@@ -61,6 +61,10 @@ namespace Service.Tests
         [Fact]
         public async void TestForGetPlaybooks()
         {
+            //for coverage
+            var dbContext = new PlaybookContext();
+            var logicClass = new Logic();
+
             var options = new DbContextOptionsBuilder<PlaybookContext>()
             .UseInMemoryDatabase(databaseName: "p3PlaybookService")
             .Options;
