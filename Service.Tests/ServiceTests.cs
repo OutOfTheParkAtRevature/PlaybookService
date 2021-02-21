@@ -86,6 +86,8 @@ namespace Service.Tests
                 };
 
                 r.Playbooks.Add(playbook);
+                await r.CommitSave();
+
                 var listOfPlaybooks = await logic.GetPlaybooks();
                 Assert.NotNull(listOfPlaybooks);
             }
@@ -118,6 +120,8 @@ namespace Service.Tests
                 };
 
                 r.Playbooks.Add(playbook);
+                await r.CommitSave();
+
                 var listOfPlaybooks = await logic.GetPlaybookById(playbook.Playbookid);
                 Assert.True(listOfPlaybooks.Equals(playbook));
             }
@@ -151,6 +155,7 @@ namespace Service.Tests
 
                 r.Playbooks.Add(playbook);
                 await r.CommitSave();
+
                 var listOfPlaybooks = await logic.GetPlaybooksByTeamId(playbook.TeamID);
                 var castedList = (List<Playbook>)listOfPlaybooks;
                 Assert.True(castedList[0].Equals(playbook));
@@ -296,6 +301,8 @@ namespace Service.Tests
                 };
 
                 r.Plays.Add(play);
+                await r.CommitSave();
+
                 var listOfPlays = await logic.GetPlayById(play.PlayID);
                 Assert.True(listOfPlays.Equals(play));
             }
@@ -364,6 +371,8 @@ namespace Service.Tests
                 };
 
                 r.Plays.Add(play);
+                await r.CommitSave();
+
                 var playDto = await logic.GetPlayDto(play.PlayID);
                 Assert.True(playDto.PlayID.Equals(play.PlayID));
             }
@@ -398,6 +407,7 @@ namespace Service.Tests
 
                 r.Plays.Add(play);
                 await r.CommitSave();
+
                 var listOfPlays = await logic.GetPlays();
                 Assert.NotEmpty(listOfPlays);
                 Assert.True(listOfPlays.FirstOrDefault(x => x.PlayID == play.PlayID).Name == play.Name);
@@ -434,6 +444,7 @@ namespace Service.Tests
                 };
                 r.Plays.Add(play);
                 await r.CommitSave();
+
                 var deleteEmpty = await logic.DeletePlay(Guid.NewGuid());
                 Assert.Contains<Play>(play, context.Plays);
                 var deletePlay = await logic.DeletePlay(play.PlayID);
@@ -478,6 +489,7 @@ namespace Service.Tests
                 };
                 r.Playbooks.Add(playbook);
                 await r.CommitSave();
+
                 var deleteEmpty = await logic.DeletePlaybook(Guid.NewGuid());
                 Assert.Contains<Playbook>(playbook, context.Playbooks);
                 var deletePlaybook = await logic.DeletePlaybook(playbook.Playbookid);
