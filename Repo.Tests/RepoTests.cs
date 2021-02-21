@@ -64,6 +64,8 @@ namespace Repository.Tests
                 };
 
                 r.Playbooks.Add(playbook);
+                await r.CommitSave();
+
                 var listOfPlaybooks = await r.GetPlaybooks();
                 Assert.NotNull(listOfPlaybooks);
             }
@@ -94,6 +96,8 @@ namespace Repository.Tests
                 };
 
                 r.Playbooks.Add(playbook);
+                await r.CommitSave();
+
                 var listOfPlaybooks = await r.GetPlaybookById(playbook.Playbookid);
                 Assert.True(listOfPlaybooks.Equals(playbook));
             }
@@ -125,6 +129,8 @@ namespace Repository.Tests
                 };
 
                 r.Plays.Add(play);
+                await r.CommitSave();
+
                 var listOfPlays = await r.GetPlays();
                 Assert.NotNull(listOfPlays);
             }
@@ -156,6 +162,8 @@ namespace Repository.Tests
                 };
 
                 r.Plays.Add(play);
+                await r.CommitSave();
+
                 var listOfPlays = await r.GetPlayById(play.PlayID);
                 Assert.True(listOfPlays.Equals(play));
             }
@@ -188,6 +196,7 @@ namespace Repository.Tests
 
                 r.Plays.Add(play);
                 await r.CommitSave();
+
                 var listOfPlays = await r.GetPlaysByPlaybookId(play.PlaybookId);
                 var castedList = (List<Play>)listOfPlays;
                 Assert.True(castedList[0].Equals(play));
@@ -220,6 +229,7 @@ namespace Repository.Tests
 
                 r.Playbooks.Add(playbook);
                 await r.CommitSave();
+
                 var listOfPlaybooks = await r.GetPlaybooksByTeamId(playbook.TeamID);
                 var castedList = (List<Playbook>)listOfPlaybooks;
                 Assert.True(castedList[0].Equals(playbook));
