@@ -1,4 +1,5 @@
 using Microsoft.Extensions.Logging;
+using Model.DataTransfer;
 using Models;
 using Models.DataTransfer;
 using Repository;
@@ -128,6 +129,30 @@ namespace Service
             }
             return playDtos;
         }
+
+        public async Task<PlayBookWithPlaysDto> GetPlaybookWithPlays(Guid TeamId, string bookName)
+        {
+            PlayBookWithPlaysDto playBookWithPlaysDto = new PlayBookWithPlaysDto();
+            var playbookList = await GetPlaybooksByTeamId(TeamId);
+            foreach(var item in playbookList)
+            {
+                if (item.Name == bookName)
+                {
+                    playBookWithPlaysDto.Name = item.Name;
+                    playBookWithPlaysDto.Playbookid = item.Playbookid;
+                    playBookWithPlaysDto.TeamID = item.TeamID;
+
+                }
+            }
+            var plays = await GetPlaysByPlaybookId(playBookWithPlaysDto.Playbookid);
+            
+            foreach(var item in plays)
+            {
+                playBookWithPlaysDto.playDtos.Add(_mapper.ConvertToPlayDto(item));
+            }
+            return playBookWithPlaysDto;
+        }
+
         /// <summary>
         /// Delete a Playbook by ID
         /// </summary>

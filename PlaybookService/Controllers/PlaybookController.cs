@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Logging;
+using Model.DataTransfer;
 using Models;
 using Models.DataTransfer;
 using Service;
@@ -34,11 +35,19 @@ namespace PlaybookService
         {
             return await _logic.GetPlaybookById(Guid.Parse(teamId));
         }
+<<<<<<< Updated upstream
         //[HttpGet("{id}")]
         //public async Task<ActionResult<Playbook>> GetPlaybookWithPlays(string teamId, string name)
         //{
         //    return await _logic.GetPlaybookById(Guid.Parse(teamId));
         //}
+=======
+        [HttpGet("{id}")]
+        public async Task<ActionResult<PlayBookWithPlaysDto>> GetPlaybookWithPlays(string teamId, string name)
+        {
+            return await _logic.GetPlaybookWithPlays(Guid.Parse(teamId), name);
+        }
+>>>>>>> Stashed changes
         [HttpGet("plays")]
         public async Task<IEnumerable<PlayDto>> GetPlays()
         {
