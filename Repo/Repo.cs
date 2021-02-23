@@ -1,7 +1,6 @@
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Logging;
 using Models;
-using Models.DataTransfer;
 using System;
 using System.Collections.Generic;
 using System.Linq;
