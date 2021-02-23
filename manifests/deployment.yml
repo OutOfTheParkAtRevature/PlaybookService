@@ -1,0 +1,57 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: playbook-service
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: playbook-service
+  strategy:
+    rollingUpdate:
+      maxSurge: 3
+      maxUnavailable: 1
+    type: RollingUpdate
+  template:
+    metadata:
+      labels:
+        app: playbook-service
+    spec:
+      containers:
+        - name: playbook-service
+          image: outofthepark15226.azurecr.io/playbook-service
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 80
+              name: playbook-http
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: playbook-service-deployment
+spec:
+  ports:
+    - name: playbook-service
+      port: 80
+      targetPort: playbook-http
+  selector:
+    app: playbook-service
+  type: LoadBalancer
+---
+apiVersion: networking.k8s.io/v1beta1
+kind: Ingress
+metadata:
+  name: playbook-service-ingress
+  annotations:
+    kubernetes.io/ingress.class: addon-http-application-routing
+spec:
+  rules:
+  - host: playbook-service.1c50b018f5784721b39b.eastus.aksapp.io
+    http:
+      paths:
+      - pathType: Prefix
+        backend:
+          serviceName: playbook-service-deployment
+          servicePort: 80
+        path: /playbook(/|$)(.*)
+
