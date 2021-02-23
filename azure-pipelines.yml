@@ -26,8 +26,8 @@ stages:
             inputs:
               SonarCloud: 'sonarcloud connection'
               organization: 121420-dotnet-sonarcloud
-              projectKey: OutOfTheParkplaybookService
-              projectName: OutOfTheParkplaybookService
+              projectKey: OutOfTheParkPlaybookService
+              projectName: OutOfTheParkPlaybookService
               scannerMode: MSBuild
               extraProperties: |
                 sonar.exclusions=**/obj/**,**/lib/**,**/*.dll
