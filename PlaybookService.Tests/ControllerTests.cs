@@ -248,7 +248,7 @@ namespace PlaybookService.Tests
                 r.Plays.Add(play);
                 await r.CommitSave();
 
-                var getPlay = await playbookController.GetPlayDto(play.PlayID.ToString(), play.Name);
+                var getPlay = await playbookController.GetPlayDto(play.PlayID.ToString());
                 Assert.Equal("Tackle", getPlay.Value.Name);
                 Assert.Equal("Tackle other players", getPlay.Value.Description);
             }
