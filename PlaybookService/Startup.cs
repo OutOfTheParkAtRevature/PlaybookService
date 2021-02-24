@@ -36,7 +36,7 @@ namespace PlaybookService
                 c.SwaggerDoc("v1", new OpenApiInfo { Title = "PlaybookService", Version = "v1" });
             });
 
-            services.AddDbContext<PlaybookContext>(options => options.UseSqlServer(Configuration.GetConnectionString("LocalDB")));
+            services.AddDbContext<PlaybookContext>(options => options.UseSqlServer(Configuration.GetConnectionString("AzureDB")));
 
             var identityUrl = Configuration.GetValue<string>("IdentityUrl");
             var jwtSettings = Configuration.GetSection("JwtSettings");
