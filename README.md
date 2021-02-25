@@ -1,7 +1,7 @@
 # PlaybookService
 
 ## Description
-Allows coach to create plays and create a playbook to store the plays. The coach can also edit or delete existing plays. Other users will be able to view their team's playbook, which includes all of the plays the coach added.
+Allows Head Coach to create plays and create a playbook to store the plays. A play involves the image created by what the Head Coach drew on the canvas, a name, and a description. The Head Coach can also edit or delete existing plays. Other users will be able to view their team's playbook, which includes all of the plays the Head Coach added.
 
 ## Functionality
 * Create play
@@ -9,9 +9,19 @@ Allows coach to create plays and create a playbook to store the plays. The coach
 * Edit play
 * Delete play
 * Delete playbook
+* Get play by id or get a list of plays
+* Get playbook by id or get a list of playbooks
 
-## To-Do List
-* Add Authorization for coach to be able to add/edit/delete plays and/or playbooks
+## Getting Started
+1. Clone this repo to your local machine:
+```bash
+  git clone https://github.com/OutOfTheParkAtRevature/PlaybookService.git
+```
+2. To create and connect first branch to remote repository branch:
+```bash
+  git push --set-upstream origin
+```
+3. Use IDE like Visual Studio to run application. This will bring Swagger up in the browser and allow you to test the service.
 
 ## Links
 This Repository is part of an application designed with a Microservice Architecture. The other parts of the application are listed below:
