@@ -14,6 +14,7 @@ namespace PlaybookService
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize]
     public class PlaybookController : ControllerBase
     {
         private readonly Logic _logic;

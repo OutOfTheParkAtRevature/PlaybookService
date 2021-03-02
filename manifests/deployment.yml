@@ -19,7 +19,7 @@ spec:
     spec:
       containers:
         - name: playbook-service
-          image: outofthepark15226.azurecr.io/playbook-service
+          image: outoftheparkacr.azurecr.io/playbook-service
           imagePullPolicy: Always
           ports:
             - containerPort: 80
@@ -36,22 +36,4 @@ spec:
       targetPort: playbook-http
   selector:
     app: playbook-service
-  type: LoadBalancer
----
-apiVersion: networking.k8s.io/v1beta1
-kind: Ingress
-metadata:
-  name: playbook-service-ingress
-  annotations:
-    kubernetes.io/ingress.class: addon-http-application-routing
-spec:
-  rules:
-  - host: playbook-service.1c50b018f5784721b39b.eastus.aksapp.io
-    http:
-      paths:
-      - pathType: Prefix
-        backend:
-          serviceName: playbook-service-deployment
-          servicePort: 80
-        path: /playbook(/|$)(.*)
-
+  type: ClusterIP
