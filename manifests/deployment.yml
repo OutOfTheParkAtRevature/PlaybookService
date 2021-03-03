@@ -32,7 +32,9 @@ metadata:
 spec:
   ports:
     - name: playbook-service
+      protocol: TCP
       port: 80
+      targetPort: 80
   selector:
     app: playbook-service
   type: ClusterIP
