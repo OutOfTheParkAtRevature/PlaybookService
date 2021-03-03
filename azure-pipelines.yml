@@ -4,7 +4,7 @@ trigger:
 
 variables:
   playbookRepository: 'playbook-service'
-  tag: '$(Build.BuildId)'
+  tag: 'latest'
   imagePullSecret: 'playbook'
 
 stages:
@@ -74,7 +74,7 @@ stages:
       displayName: Deploy
       pool:
         vmImage: 'ubuntu-latest'
-      environment: 'spike2.default'
+      environment: 'spike.default'
       variables:
       - group: Release
       strategy:

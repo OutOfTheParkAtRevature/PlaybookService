@@ -33,8 +33,7 @@ metadata:
   namespace: default
 spec:
   ports:
-    - name: playbook-http
-      protocol: TCP
+    - protocol: TCP
       port: 80
       targetPort: 80
   selector:
